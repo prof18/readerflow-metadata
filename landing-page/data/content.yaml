@@ -133,7 +133,7 @@ footer:
   
   links:
     - text: "Report Issues"
-      url: "#"
+      url: "https://github.com/prof18/readerflow-metadata/issues/new/choose"
       external: false
     - text: "Privacy Policy"
       url: "https://www.prof18.com/reader-flow/pp/privacy-policy-dec24/"

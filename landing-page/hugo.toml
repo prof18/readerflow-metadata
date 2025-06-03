@@ -1,4 +1,4 @@
-baseURL = 'https://readerflow.github.io'
+baseURL = 'https://readerflow.app'
 languageCode = 'en-us'
 title = 'ReaderFlow - Your Personal Read-It-Later App'
 theme = 'readerflow'

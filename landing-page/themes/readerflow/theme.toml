@@ -1,0 +1,12 @@
+name = "ReaderFlow"
+license = "MIT"
+licenselink = "https://github.com/readerflow/readerflow/blob/main/LICENSE"
+description = "A custom theme for ReaderFlow landing page"
+homepage = "https://github.com/readerflow/readerflow"
+tags = ["landing", "app", "mobile"]
+features = ["responsive"]
+min_version = "0.41.0"
+
+[author]
+  name = "ReaderFlow Team"
+  homepage = "https://github.com/readerflow" 

@@ -1,0 +1,148 @@
+# ReaderFlow Website Content Configuration
+site:
+  title: "ReaderFlow - Save and read articles offline"
+  description: "A beautiful, offline-first read-it-later app that keeps your articles synced across all your devices."
+  author: "Marco Gomiero"
+  logo: "/icon-512-maskable.png"
+  logo_alt: "ReaderFlow"
+
+# Hero Section
+hero:
+  brand_title: "ReaderFlow" 
+  logo: "/icon-512-maskable.png"
+  logo_alt: "ReaderFlow"
+  description: "A clean, offline-first reading experience, fully private and on your device. Save articles, sync across devices, and enjoy distraction-free reading anywhere."
+  
+  store_buttons:
+    app_store:
+      url: "https://apps.apple.com/app/readerflow/id6739498537"
+      subtitle: "Download on the"
+      title: "App Store"
+    google_play:
+      url: "https://play.google.com/store/apps/details?id=com.prof18.readerflow"
+      subtitle: "Get it on"
+      title: "Google Play"
+  
+  screenshots:
+    home:
+      src: "/screenshots/ios/home.png"
+      alt: "ReaderFlow iOS Home Screen"
+      label: "Home Screen"
+    reader:
+      src: "/screenshots/ios/reader-mode.png"
+      alt: "ReaderFlow iOS Reader Mode"
+      label: "Reader Mode"
+
+# Features Section
+features:
+  section_id: "features"
+  title: "Why Choose ReaderFlow?"
+  subtitle: "Built with privacy and performance in mind"
+  
+  items:
+    - title: "100% Offline Reading"
+      icon_class: "offline"
+      description: "All content is processed and stored locally on your device. No internet required for reading your saved articles."
+    
+    - title: "Smart Sync"
+      icon_class: "sync"
+      description: "Sync your reading list across all devices using Dropbox (Android & iOS) or iCloud (iOS only)."
+    
+    - title: "On-Device Parsing"
+      icon_class: "parsing"
+      description: "Content extraction happens locally, ensuring a fast reading experience and complete privacy."
+    
+    - title: "Easy CSV Import"
+      icon_class: "csv-import"
+      description: "Migrate from any read-it-later service with flexible CSV import. Supports Pocket, Instapaper, Omnivore, and custom formats."
+    
+    - title: "Smart Organization"
+      icon_class: "tags"
+      description: "Tag your articles, archive when done, and find content quickly."
+    
+    - title: "Cross-Platform"
+      icon_class: "cross-platform"
+      description: "Available on Android and iOS with feature parity. Your reading experience stays consistent everywhere."
+
+# CSV Import Section
+csv_import:
+  section_id: "csv-import"
+  title: "Import Your Reading List"
+  subtitle: "Migrate from any read-it-later service with our flexible CSV import. ReaderFlow supports CSV exports from popular services like Pocket, Instapaper, Omnivore, and custom CSV formats."
+  
+  format_requirements:
+    title: "CSV Format Requirements"
+    description: "ReaderFlow's flexible parser automatically detects column names and formats. Here's what you need to know:"
+    
+    requirement_note:
+      text: "Only URLs are required!"
+      detail: "All other columns are optional and will enhance your import."
+  
+  fields:
+    - name: "URL"
+      type: "required"
+      icon_class: "url-icon"
+      description: "The web address of your saved article. This is the only mandatory field."
+      column_names: ["url", "URL"]
+    
+    - name: "Title"
+      type: "optional"
+      icon_class: "title-icon"
+      description: "The title of your article. If not provided, ReaderFlow will extract it automatically."
+      column_names: ["title", "Title"]
+    
+    - name: "Tags/Labels"
+      type: "optional"
+      icon_class: "tags-icon"
+      description: "Tags or categories for organizing your articles. Supports multiple formats and separators."
+      column_names: ["tags", "tag", "Tags", "labels"]
+      note: "Use commas , or pipes | to separate multiple tags"
+      note_type: "separators"
+    
+    - name: "Status/State"
+      type: "optional"
+      icon_class: "status-icon"
+      description: "The reading status of your article. Articles marked as archived will be imported as read."
+      column_names: ["state", "status", "Folder"]
+      note: "archive, Archived, or Archive"
+      note_type: "archive_values"
+    
+    - name: "Date Added"
+      type: "optional"
+      icon_class: "date-icon"
+      description: "When the article was originally saved. Preserves your reading history timeline."
+      column_names: ["time_added", "Timestamp"]
+      note: "Unix timestamp (seconds since epoch). If not provided, uses current time."
+      note_type: "format"
+  
+  example:
+    title: "📋 Example CSV Format"
+    note: "Here's a sample CSV that demonstrates the format. Remember: only the URL column is required!"
+    content: |
+      url,title,tags,state,time_added
+      https://example.com/article1,"Great Programming Article","programming,tutorial",unread,1640995200
+      https://example.com/article2,"Design Patterns Guide","programming|design,patterns",archive,1640908800
+      https://example.com/article3,"Quick Read",,unread,1640822400
+
+# Footer
+footer:
+  logo: "/icon-192.png"
+  logo_alt: "ReaderFlow"
+  brand_text: "ReaderFlow"
+  claim: "Save and read articles offline with a clean, minimal interface."
+  
+  links:
+    - text: "Report Issues"
+      url: "#"
+      external: false
+    - text: "Privacy Policy"
+      url: "https://www.prof18.com/reader-flow/pp/privacy-policy-dec24/"
+      external: true
+    - text: "About the Author"
+      url: "https://www.marcogomiero.com/"
+      external: true
+    - text: "Donations 🙏"
+      url: "https://www.paypal.me/MarcoGomiero"
+      external: true        
+  
+  copyright: "ReaderFlow. All rights reserved."

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} - {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}">
+    <meta name="author" content="{{ .Site.Params.author }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ .Site.Title }}">
+    <meta property="og:description" content="{{ .Site.Params.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:image" content="{{ .Site.BaseURL }}/icon-512.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ .Site.Title }}">
+    <meta name="twitter:description" content="{{ .Site.Params.description }}">
+    <meta name="twitter:image" content="{{ .Site.BaseURL }}/icon-512.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ $content := .Site.Data.content }}
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <img src="{{ $content.footer.logo }}" alt="{{ $content.footer.logo_alt }}" class="footer-logo-icon">
+                        <span class="footer-logo-text">{{ $content.footer.brand_text }}</span>
+                    </div>
+                    <p class="footer-claim">{{ $content.footer.claim }}</p>
+                </div>
+                <div class="footer-right">
+                    <nav class="footer-links">
+                        {{ range $content.footer.links }}
+                        <a href="{{ .url }}" {{ if .external }}target="_blank" rel="noopener noreferrer"{{ end }} class="footer-link">{{ .text }}</a>
+                        {{ end }}
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; {{ now.Format "2006" }} {{ $content.footer.copyright }}</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ "js/main.js" | relURL }}"></script>
+</body>
+</html> 

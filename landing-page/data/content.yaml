@@ -1,7 +1,7 @@
 # ReaderFlow Website Content Configuration
 site:
   title: "ReaderFlow - Save and read articles offline"
-  description: "A beautiful, offline-first read-it-later app that keeps your articles synced across all your devices."
+  description: "A clean, offline-first reading experience, fully private and on your device. Save articles, sync across devices, and enjoy distraction-free reading anywhere."
   author: "Marco Gomiero"
   logo: "/icon-512-maskable.png"
   logo_alt: "ReaderFlow"

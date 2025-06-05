@@ -210,5 +210,59 @@
     </div>
 </section>
 
+<!-- Development Status Section -->
+<section id="{{ $content.development_status.section_id }}" class="development-status">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">{{ $content.development_status.title }}</h2>
+            <p class="section-description">{{ $content.development_status.subtitle }}</p>
+        </div>
+        
+        <div class="status-message">
+            <p>{{ $content.development_status.main_message }}</p>
+        </div>
+        
+        <div class="status-grid">
+            {{ range $content.development_status.items }}
+            <div class="status-card">
+                <div class="status-icon {{ .icon_class }}">
+                    {{ if eq .icon_class "macos" }}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                    {{ else if eq .icon_class "compatibility" }}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14,2 14,8 20,8"/>
+                        <path d="M12 18h.01"/>
+                        <path d="M12 6v6l4 3"/>
+                    </svg>
+                    {{ else if eq .icon_class "feedback" }}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        <path d="M13 8H7"/>
+                        <path d="M17 12H7"/>
+                    </svg>
+                    {{ end }}
+                </div>
+                <h3 class="status-title">{{ .title }}</h3>
+                <p class="status-description">{{ .description }}</p>
+                {{ if .link }}
+                <a href="{{ .link.url }}" class="status-link" {{ if eq .link.url "https://apps.apple.com/it/story/id1535099772?l=en-GB" }}target="_blank" rel="noopener noreferrer"{{ end }}>
+                    {{ .link.text }}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="link-icon">
+                        <path d="M7 17L17 7"/>
+                        <path d="M7 7h10v10"/>
+                    </svg>
+                </a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
 {{ end }} 
 

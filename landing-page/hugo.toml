@@ -20,10 +20,14 @@ theme = 'readerflow'
     url = "#features"
     weight = 10
   [[menu.main]]
+    name = "Status"
+    url = "#development-status"
+    weight = 20
+  [[menu.main]]
     name = "Import"
     url = "#csv-import"
-    weight = 20
+    weight = 30
   [[menu.main]]
     name = "Download"
     url = "#download"
-    weight = 30
+    weight = 40

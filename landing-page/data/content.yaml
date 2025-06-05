@@ -64,6 +64,31 @@ features:
       icon_class: "cross-platform"
       description: "Available on Android and iOS with feature parity. Your reading experience stays consistent everywhere."
 
+# Development Status Section
+development_status:
+  section_id: "development-status"
+  title: "Development Status"
+  subtitle: "ReaderFlow is currently in active development, and any feedback is greatly appreciated to help improve the app."
+  
+  items:
+    - title: "macOS Support Coming Soon"
+      icon_class: "macos"
+      description: "A proper native macOS client is in development that will provide the full ReaderFlow experience on Mac."
+    
+    - title: "iPad Compatibility Mode"
+      icon_class: "compatibility"
+      description: "Mac users with Apple Silicon can currently install and run the iPad version in compatibility mode."
+      link:
+        text: "Learn more about iPad apps on Mac"
+        url: "https://apps.apple.com/it/story/id1535099772?l=en-GB"
+    
+    - title: "Your Feedback Matters"
+      icon_class: "feedback"
+      description: "Help make ReaderFlow better! Report bugs, suggest features, or share your experience with the app."
+      link:
+        text: "Submit Feedback"
+        url: "https://github.com/prof18/readerflow-metadata/issues/new/choose"
+
 # CSV Import Section
 csv_import:
   section_id: "csv-import"

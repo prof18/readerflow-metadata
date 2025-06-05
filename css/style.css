@@ -1086,6 +1086,20 @@ body {
         grid-template-columns: 1fr;
     }
 
+    /* Development Status responsive styles */
+    .development-status {
+        padding: 3rem 0;
+    }
+
+    .status-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .status-card {
+        padding: 1.5rem;
+    }
+
     /* Import section responsive styles */
     .import {
         padding: 3rem 0;
@@ -1230,6 +1244,43 @@ body {
     
     .screenshot-img-stunning {
         width: 240px;
+    }
+
+    /* Development Status responsive styles for small screens */
+    .development-status {
+        padding: 2rem 0;
+    }
+
+    .status-message p {
+        font-size: 1rem;
+    }
+
+    .status-grid {
+        gap: 1rem;
+    }
+
+    .status-card {
+        padding: 1.25rem;
+    }
+
+    .status-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 1rem;
+    }
+
+    .status-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .status-title {
+        font-size: 1.125rem;
+    }
+
+    .status-link {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
     }
 
     /* Additional import section responsive styles for very small screens */
@@ -1482,4 +1533,239 @@ body {
         font-size: 0.85rem;
         padding: 0.875rem;
     }
+
+    /* Development Status responsive styles for extra small screens */
+    .development-status {
+        padding: 1.5rem 0;
+    }
+
+    .status-message {
+        margin-bottom: 2rem;
+    }
+
+    .status-message p {
+        font-size: 0.95rem;
+    }
+
+    .status-grid {
+        gap: 0.875rem;
+    }
+
+    .status-card {
+        padding: 1rem;
+    }
+
+    .status-icon {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 0.875rem;
+    }
+
+    .status-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .status-title {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .status-description {
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+    }
+
+    .status-link {
+        font-size: 0.85rem;
+        padding: 0.375rem 0.625rem;
+    }
+
+    .import-content {
+        gap: 1.5rem;
+        width: 100%;
+        overflow-x: hidden;
+    }
+}
+
+/* Development Status Section */
+.development-status {
+    padding: 5rem 0;
+    background: white;
+}
+
+.status-message {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.status-message p {
+    font-size: 1.125rem;
+    color: var(--gray-600);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.status-card {
+    padding: 2rem;
+    background: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.status-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.status-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.status-icon.macos {
+    background: linear-gradient(135deg, #007AFF, #0051D5);
+}
+
+.status-icon.compatibility {
+    background: linear-gradient(135deg, #34C759, #248A3D);
+}
+
+.status-icon.feedback {
+    background: var(--primary-gradient);
+}
+
+.status-icon svg {
+    width: 24px;
+    height: 24px;
+    color: white;
+}
+
+.status-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--gray-900);
+}
+
+.status-description {
+    color: var(--gray-600);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.status-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: rgba(255, 87, 34, 0.1);
+}
+
+.status-link:hover {
+    background: rgba(255, 87, 34, 0.15);
+    transform: translateX(2px);
+}
+
+.link-icon {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2;
+}
+
+/* Development Status responsive styles */
+.development-status {
+    padding: 3rem 0;
+}
+
+.status-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.status-card {
+    padding: 1.5rem;
+}
+
+/* Import section responsive styles */
+.import {
+    padding: 3rem 0;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.import-content {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* Development Status responsive styles for small screens */
+.development-status {
+    padding: 2rem 0;
+}
+
+.status-message p {
+    font-size: 1rem;
+}
+
+.status-grid {
+    gap: 1rem;
+}
+
+.status-card {
+    padding: 1.25rem;
+}
+
+.status-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1rem;
+}
+
+.status-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.status-title {
+    font-size: 1.125rem;
+}
+
+.status-link {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Additional import section responsive styles for very small screens */
+.import {
+    padding: 2rem 0;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.import-content {
+    gap: 2rem;
+    width: 100%;
+    overflow-x: hidden;
 }

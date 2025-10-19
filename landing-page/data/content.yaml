@@ -25,11 +25,11 @@ hero:
   
   screenshots:
     home:
-      src: "/screenshots/ios/home.png"
+      src: "/screenshots/ios/home.webp"
       alt: "ReaderFlow iOS Home Screen"
       label: "Home Screen"
     reader:
-      src: "/screenshots/ios/reader.png"
+      src: "/screenshots/ios/reader.webp"
       alt: "ReaderFlow iOS Reader Mode"
       label: "Reader Mode"
 
@@ -71,7 +71,7 @@ macos_showcase:
   subtitle: "Experience the same powerful, distraction-free reading on your Mac"
   description: "The native macOS app brings all of ReaderFlow's features to your desktop. Enjoy a clean reading experience that seamlessly syncs across all your devices."
   screenshot:
-    src: "/screenshots/macos/reader.png"
+    src: "/screenshots/macos/reader.webp"
     alt: "ReaderFlow on macOS"
   store_button:
     url: "https://apps.apple.com/app/readerflow/id6739498537"

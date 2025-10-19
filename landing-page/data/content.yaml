@@ -29,7 +29,7 @@ hero:
       alt: "ReaderFlow iOS Home Screen"
       label: "Home Screen"
     reader:
-      src: "/screenshots/ios/reader-mode.png"
+      src: "/screenshots/ios/reader.png"
       alt: "ReaderFlow iOS Reader Mode"
       label: "Reader Mode"
 
@@ -46,7 +46,7 @@ features:
     
     - title: "Smart Sync"
       icon_class: "sync"
-      description: "Sync your reading list across all devices using Dropbox (Android & iOS) or iCloud (iOS only)."
+      description: "Sync your reading list across all devices using Dropbox (Android, iOS & macOS) or iCloud (iOS & macOS)."
     
     - title: "On-Device Parsing"
       icon_class: "parsing"
@@ -62,32 +62,20 @@ features:
     
     - title: "Cross-Platform"
       icon_class: "cross-platform"
-      description: "Available on Android and iOS with feature parity. Your reading experience stays consistent everywhere."
+      description: "Available on Android, iOS, and macOS with feature parity. Your reading experience stays consistent everywhere."
 
-# Development Status Section
-development_status:
-  section_id: "development-status"
-  title: "Development Status"
-  subtitle: "ReaderFlow is currently in active development, and any feedback is greatly appreciated to help improve the app."
-  
-  items:
-    - title: "macOS Support Coming Soon"
-      icon_class: "macos"
-      description: "A proper native macOS client is in development that will provide the full ReaderFlow experience on Mac."
-    
-    - title: "iPad Compatibility Mode"
-      icon_class: "compatibility"
-      description: "Mac users with Apple Silicon can currently install and run the iPad version in compatibility mode."
-      link:
-        text: "Learn more about iPad apps on Mac"
-        url: "https://apps.apple.com/it/story/id1535099772?l=en-GB"
-    
-    - title: "Your Feedback Matters"
-      icon_class: "feedback"
-      description: "Help make ReaderFlow better! Report bugs, suggest features, or share your experience with the app."
-      link:
-        text: "Submit Feedback"
-        url: "https://github.com/prof18/readerflow-metadata/issues/new/choose"
+# macOS Section
+macos_showcase:
+  section_id: "macos"
+  title: "Now Available on macOS"
+  subtitle: "Experience the same powerful, distraction-free reading on your Mac"
+  description: "The native macOS app brings all of ReaderFlow's features to your desktop. Enjoy a clean reading experience that seamlessly syncs across all your devices."
+  screenshot:
+    src: "/screenshots/macos/reader.png"
+    alt: "ReaderFlow on macOS"
+  store_button:
+    url: "https://apps.apple.com/app/readerflow/id6739498537"
+    text: "Download for Mac"
 
 # CSV Import Section
 csv_import:

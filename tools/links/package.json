@@ -1,0 +1,1 @@
+{"name":"readerflow-link-checks","private":true,"type":"module","scripts":{"test":"node --test tests/parser.test.mjs","check-deployment":"node check-deployment.mjs","dev":"node dev-server.mjs"}}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <meta name="referrer" content="no-referrer">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta property="og:title" content="Open in ReaderFlow">
+    <meta property="og:description" content="Continue reading in the ReaderFlow app.">
+    <title>Open in ReaderFlow</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./handoff.js"></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <div class="brand-mark" aria-label="ReaderFlow">Reader<span>Flow</span></div>
+      <section class="handoff" aria-labelledby="title">
+        <p class="eyebrow">Your next read</p>
+        <h1 id="title">Open this article in ReaderFlow.</h1>
+        <p id="intro" class="lede">Continue reading in the ReaderFlow app.</p>
+        <div class="actions">
+          <a id="open-button" class="button button-primary" hidden>Open ReaderFlow</a>
+          <a id="install-button" class="button button-secondary" href="https://apps.apple.com/app/readerflow/id6739498537">Get ReaderFlow <span aria-hidden="true">↗</span></a>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <div id="copy-wrap" class="copy-wrap" hidden>
+          <button id="copy-button" class="copy-button" type="button">Copy article URL</button>
+          <span class="copy-help">After installing, return to the message and tap the link again.</span>
+          <textarea id="manual-copy" aria-label="Article URL to copy" rows="3" readonly hidden></textarea>
+        </div>
+        <p id="browser-help" class="copy-help">If Telegram keeps this page open, use its menu to open it in Safari or your browser, then tap Open ReaderFlow.</p>
+        <noscript><p>Enable JavaScript to open this link in ReaderFlow, or return to the sender for the original article URL.</p></noscript>
+      </section>
+      <footer>
+        <span>ReaderFlow</span>
+        <nav aria-label="Get ReaderFlow">
+          <a href="https://apps.apple.com/app/readerflow/id6739498537">iOS &amp; macOS ↗</a>
+          <a href="https://play.google.com/store/apps/details?id=com.prof18.readerflow">Android ↗</a>
+        </nav>
+      </footer>
+    </main>
+  </body>
+</html>

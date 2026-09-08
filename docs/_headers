@@ -1,0 +1,13 @@
+/.well-known/apple-app-site-association
+  Content-Type: application/json
+  X-Content-Type-Options: nosniff
+
+/.well-known/assetlinks.json
+  Content-Type: application/json
+  X-Content-Type-Options: nosniff
+
+/article/*
+  Content-Security-Policy: default-src 'self'; connect-src 'none'; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Referrer-Policy: no-referrer
+  X-Content-Type-Options: nosniff
+  X-Robots-Tag: noindex, nofollow, noarchive

@@ -16,7 +16,11 @@ const assets = new Map([
 for (const name of ['newsreader-500', 'newsreader-600', 'public-sans-400', 'public-sans-600']) {
   assets.set(`/article/fonts/${name}.ttf`, [`article/fonts/${name}.ttf`, 'font/ttf']);
 }
-const headers = {
+for (const name of ['home', 'reader']) {
+  assets.set(`/screenshots/ios/${name}.webp`, [`screenshots/ios/${name}.webp`, 'image/webp']);
+}
+assets.set('/screenshots/macos/reader.webp', ['screenshots/macos/reader.webp', 'image/webp']);
+const handoffHeaders = {
   'Content-Security-Policy': "default-src 'self'; connect-src 'none'; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
   'Referrer-Policy': 'no-referrer',
   'X-Robots-Tag': 'noindex, nofollow, noarchive',
@@ -29,6 +33,7 @@ createServer(async (request, response) => {
     response.end();
     return;
   }
+  const headers = pathname.startsWith('/article/') ? handoffHeaders : { 'X-Content-Type-Options': 'nosniff' };
   const asset = assets.get(pathname);
   if (!asset || !['GET', 'HEAD'].includes(request.method)) {
     response.writeHead(404, { ...headers, 'Content-Type': 'text/plain; charset=utf-8' });

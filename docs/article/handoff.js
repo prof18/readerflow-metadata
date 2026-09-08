@@ -28,7 +28,7 @@ if (result.ok) {
     }
   });
 } else {
-  document.querySelector('#title').textContent = 'This article link is incomplete or invalid.';
-  document.querySelector('#intro').textContent = 'Ask the sender for a new ReaderFlow link.';
+  document.querySelector('#title').textContent = 'This link needs another look.';
+  document.querySelector('#intro').textContent = 'This article link is incomplete or invalid. Ask the sender for a new ReaderFlow link.';
   document.querySelector('#browser-help').hidden = true;
 }

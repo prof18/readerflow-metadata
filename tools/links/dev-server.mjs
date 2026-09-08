@@ -3,6 +3,9 @@ import { readFile } from 'node:fs/promises';
 
 const docs = new URL('../../docs/', import.meta.url);
 const assets = new Map([
+  ['/', ['index.html', 'text/html; charset=utf-8']],
+  ['/icon-512.png', ['icon-512.png', 'image/png']],
+  ['/favicon.ico', ['favicon.ico', 'image/x-icon']],
   ['/article/', ['article/index.html', 'text/html; charset=utf-8']],
   ['/article/handoff.js', ['article/handoff.js', 'text/javascript; charset=utf-8']],
   ['/article/parser.js', ['article/parser.js', 'text/javascript; charset=utf-8']],
@@ -10,6 +13,9 @@ const assets = new Map([
   ['/.well-known/apple-app-site-association', ['.well-known/apple-app-site-association', 'application/json']],
   ['/.well-known/assetlinks.json', ['.well-known/assetlinks.json', 'application/json']]
 ]);
+for (const name of ['newsreader-500', 'newsreader-600', 'public-sans-400', 'public-sans-600']) {
+  assets.set(`/article/fonts/${name}.ttf`, [`article/fonts/${name}.ttf`, 'font/ttf']);
+}
 const headers = {
   'Content-Security-Policy': "default-src 'self'; connect-src 'none'; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
   'Referrer-Policy': 'no-referrer',

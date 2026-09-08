@@ -9,15 +9,16 @@
     <meta property="og:title" content="Open in ReaderFlow">
     <meta property="og:description" content="Continue reading in the ReaderFlow app.">
     <title>Open in ReaderFlow</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="stylesheet" href="./styles.css">
     <script type="module" src="./handoff.js"></script>
   </head>
   <body>
     <main class="page-shell">
-      <div class="brand-mark" aria-label="ReaderFlow">Reader<span>Flow</span></div>
+      <header class="site-header"><a class="brand-mark" href="/" aria-label="ReaderFlow home"><img src="/icon-512.png" alt="" width="34" height="34"><span>ReaderFlow</span></a></header>
       <section class="handoff" aria-labelledby="title">
         <p class="eyebrow">Your next read</p>
-        <h1 id="title">Open this article in ReaderFlow.</h1>
+        <h1 id="title">Your article, ready to read.</h1>
         <p id="intro" class="lede">Continue reading in the ReaderFlow app.</p>
         <div class="actions">
           <a id="open-button" class="button button-primary" hidden>Open ReaderFlow</a>
@@ -33,7 +34,7 @@
         <noscript><p>Enable JavaScript to open this link in ReaderFlow, or return to the sender for the original article URL.</p></noscript>
       </section>
       <footer>
-        <span>ReaderFlow</span>
+        <a href="/">Back to ReaderFlow</a>
         <nav aria-label="Get ReaderFlow">
           <a href="https://apps.apple.com/app/readerflow/id6739498537">iOS &amp; macOS ↗</a>
           <a href="https://play.google.com/store/apps/details?id=com.prof18.readerflow">Android ↗</a>

@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 
 const docs = new URL('../../docs/', import.meta.url);
-for (const file of ['article/index.html', 'article/handoff.js', 'article/parser.js', 'article/styles.css', '.nojekyll', '_headers']) {
+for (const file of ['article/index.html', 'article/handoff.js', 'article/parser.js', 'article/styles.css', '_headers']) {
   await readFile(new URL(file, docs));
 }
 const headers = await readFile(new URL('_headers', docs), 'utf8');

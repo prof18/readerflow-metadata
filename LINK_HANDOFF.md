@@ -6,84 +6,52 @@ The planned handoff URL remains:
 https://www.readerflow.app/article/?url=<percent-encoded-original-article-url>
 ```
 
-Keep the trailing slash: `docs/article/index.html` is a real static Pages route, so generated links load directly without a slash redirect. `docs/index.html` and `docs/CNAME` are unchanged; the migration is configured in the hosting dashboard and DNS. There is no article fetch, reader, iframe, redirect to the publisher, analytics, or backend. The browser constructs a validated `readerflow://article?url=…` link and launches it only when the user clicks Open ReaderFlow.
+Keep the trailing slash: `docs/article/index.html` is a real static Pages route, so generated links load directly without a slash redirect. `docs/index.html` remains the marketing page; domain routing is configured in Cloudflare. There is no article fetch, reader, iframe, redirect to the publisher, analytics, or backend. The browser constructs a validated `readerflow://article?url=…` link and launches it only when the user clicks Open ReaderFlow.
 
-## Hosting migration required for this setup: GitHub Pages to Cloudflare Pages
+## Hosting: Cloudflare Pages and DNS
 
-**Current live hosting: GitHub Pages. Cloudflare Pages project created: `readerflow-site`. No deployment or DNS cutover has happened yet.**
+Cloudflare Pages project `readerflow-site` serves this site from `prof18/readerflow-metadata`,
+branch `main`. GitHub hosts source code only; GitHub Pages is disabled.
+Production deployments are automatic. Output directory: `docs`; Node version: 22.
 
-The agent has already connected `prof18/readerflow-metadata` (branch `main`), configured the
-`docs` output directory and the build command below, set Node 22, and registered
-`www.readerflow.app` as the custom domain. It is pending DNS validation. Automatic production
-and preview deployments are disabled until the local changes are pushed. The supplied Android
-signing fingerprint is configured locally. Do not create another project.
+Build command:
 
-Assigned Pages hostname: `readerflow-site.pages.dev`. Authoritative DNS nameservers are
-`standard3.encirca.net` and `standard4.encirca.net`; manage the www record at that DNS provider.
-The Cloudflare account exposed to the agent does not contain a readerflow.app DNS zone.
+```sh
+node --test tools/links/tests/parser.test.mjs && node tools/links/check-deployment.mjs
+```
 
-GitHub Pages cannot configure the HTTP Content-Type header for Apple's extensionless
-`apple-app-site-association` file. For reliable association hosting, this setup uses Cloudflare
-Pages, which applies the included `docs/_headers` file. There is no existing Cloudflare proxy
-for the user to configure. Previous instructions claiming otherwise were incorrect.
+The project hostname is `readerflow-site.pages.dev`; its custom domain is `www.readerflow.app`.
+The `_headers` file serves both association files as `application/json` and applies the handoff
+security headers only to `/article/*`. The marketing page stays unchanged.
 
-Keep the same GitHub repository and the same `docs/` website files. GitHub continues to host
-source code; Cloudflare Pages becomes the website host. No article reader or backend is added.
-The native app URLs and `www.readerflow.app` address remain unchanged.
+### DNS and redirect
 
-### 1. Deploy the already-created Cloudflare Pages project
+Registration remains at EnCirca. DNS is managed in the same Cloudflare account as Pages,
+`50096d55df0f8a6fcec0e8669ea517e5`. Assigned nameservers:
 
-The supplied Android signing fingerprint is already configured.
+- `cass.ns.cloudflare.com`
+- `ishaan.ns.cloudflare.com`
 
-1. Commit and push the website changes to `main`. They are currently local only.
-2. Open the existing `readerflow-site` Pages project. Its configuration is already:
-   - Git repository: `prof18/readerflow-metadata`, production branch `main`.
-   - Root directory: repository root; output directory: `docs`.
-   - Build command: `node --test tools/links/tests/parser.test.mjs && node tools/links/check-deployment.mjs`.
-   - Node version: 22; no framework or Functions.
-3. Enable production deployments and trigger a deployment. The agent can perform this through
-   the Cloudflare API once the files and fingerprint are ready.
-4. Test `https://readerflow-site.pages.dev` and both association endpoints before changing DNS.
+| Type | Name | Target | Proxy |
+| --- | --- | --- | --- |
+| CNAME | www | readerflow-site.pages.dev | Proxied |
+| A | @ | 192.0.2.1 | Proxied |
 
-The deployment checker intentionally fails until a valid production Android signing fingerprint
-is configured. `_headers` is part of the published directory and sets `Content-Type: application/json`
-on the two association files. It scopes security headers to `/article/*`, leaving the marketing
-page's scripts and fonts alone. No separate response-header dashboard rule is needed.
+The apex address is a redirect-only placeholder, not a website origin. The active Single Redirect
+`Redirect apex to www` matches `(http.host eq "readerflow.app")`, returns 301 to
+`concat("https://www.readerflow.app", http.request.uri.path)`, and preserves the query string.
+This handles HTTP and HTTPS. Do not reverse the redirect: the apps associate with `www`.
+Existing Google verification and SPF TXT records are retained. No MX record existed at migration.
 
-### 2. Connect www.readerflow.app and change its DNS
+The zone activated on 2026-09-08. HTTPS, the apex redirect, and both association endpoints were
+verified on the new route. Cached delegation can temporarily use the old provider.
 
-The Pages project already has **www.readerflow.app** registered under Custom domains. After a successful deployment, edit the record at your current DNS provider:
+### Verification
 
-| Type | Name | Target |
-| --- | --- | --- |
-| CNAME | www | `readerflow-site.pages.dev` |
-
-The exact target is `readerflow-site.pages.dev`. Replace the current `www` records rather than
-adding conflicting records. The current DNS answer includes A and AAAA records; a CNAME must
-not coexist with A/AAAA records at the same www name. Keep a copy of the old record for
-rollback. Wait for the custom domain and HTTPS certificate to become active, then verify the site
-and association endpoints. Do not redirect `www` to the apex; the apps associate with `www`.
-
-**You can keep your current DNS provider and nameservers when using the `www` subdomain.**
-Adding the bare `readerflow.app` apex to Cloudflare Pages is a separate option that requires the
-zone's nameservers on Cloudflare. Inspect the existing apex-to-www behavior during migration:
-if GitHub Pages currently supplies that redirect, leave it active until its replacement is tested.
-Do not disable GitHub Pages until both the new www site and any existing apex redirect work.
-
-If you also want the apex site hosted on Cloudflare Pages, migrate the DNS zone, preserve its
-existing records (including email), then add the apex custom domain. That is not necessary just
-to host the new links at www.readerflow.app.
-
-### 3. Verify the live response and retire the old host
-
-Keep the association endpoints publicly reachable without redirects, authentication or bot
-challenges. Verify 200 responses, JSON bodies and `Content-Type: application/json` on the actual
-custom domain. Only then retire the old GitHub Pages deployment when it is no longer needed for
-an apex redirect or rollback. Future website updates publish through the new Pages project.
-
-The page has no analytics or article-fetching requests. Avoid enabling request logging or analytics
-that captures article query strings. The original URL remains visible in the shared link and can
-reach hosting infrastructure; percent encoding does not make it secret.
+Verify the homepage and `/article/` on the custom domain, both association files returning 200
+without redirects with JSON MIME types, and the apex redirect preserving path and query.
+Keep association endpoints free of authentication and bot challenges. The page never fetches
+or renders articles. Query strings contain the original URL; encoding does not make it secret.
 
 ## Android signing fingerprint — required
 

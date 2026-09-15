@@ -7,7 +7,8 @@
       "namespace": "android_app",
       "package_name": "com.prof18.readerflow",
       "sha256_cert_fingerprints": [
-        "4C:A4:18:8B:F3:17:B7:2E:DF:15:33:ED:87:BC:AA:B2:91:48:C4:59:5B:7A:56:C8:90:5D:2E:A2:DD:6B:F9:98"
+        "4C:A4:18:8B:F3:17:B7:2E:DF:15:33:ED:87:BC:AA:B2:91:48:C4:59:5B:7A:56:C8:90:5D:2E:A2:DD:6B:F9:98",
+        "A8:32:03:53:91:F3:28:67:54:11:69:3C:4D:44:DD:0F:A0:CB:A7:44:85:17:F8:63:B4:50:A3:B1:52:54:53:B7"
       ]
     }
   }

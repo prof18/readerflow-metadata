@@ -13,10 +13,10 @@ const assets = new Map([
   ['/.well-known/apple-app-site-association', ['.well-known/apple-app-site-association', 'application/json']],
   ['/.well-known/assetlinks.json', ['.well-known/assetlinks.json', 'application/json']]
 ]);
-for (const name of ['newsreader-500', 'newsreader-600', 'public-sans-400', 'public-sans-600']) {
-  assets.set(`/article/fonts/${name}.ttf`, [`article/fonts/${name}.ttf`, 'font/ttf']);
+for (const name of ['schibsted-grotesk-var', 'spline-sans-mono-var']) {
+  assets.set(`/article/fonts/${name}.woff2`, [`article/fonts/${name}.woff2`, 'font/woff2']);
 }
-for (const name of ['home', 'reader']) {
+for (const name of ['home-frame', 'reader-frame']) {
   assets.set(`/screenshots/ios/${name}.webp`, [`screenshots/ios/${name}.webp`, 'image/webp']);
 }
 assets.set('/screenshots/macos/reader.webp', ['screenshots/macos/reader.webp', 'image/webp']);

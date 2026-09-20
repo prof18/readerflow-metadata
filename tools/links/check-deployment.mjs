@@ -5,8 +5,8 @@ const docs = new URL('../../docs/', import.meta.url);
 for (const file of ['article/index.html', 'article/handoff.js', 'article/parser.js', 'article/styles.css', '_headers']) {
   await readFile(new URL(file, docs));
 }
-for (const name of ['newsreader-500', 'newsreader-600', 'public-sans-400', 'public-sans-600']) {
-  await readFile(new URL(`article/fonts/${name}.ttf`, docs));
+for (const name of ['schibsted-grotesk-var', 'spline-sans-mono-var']) {
+  await readFile(new URL(`article/fonts/${name}.woff2`, docs));
 }
 await readFile(new URL('icon-512.png', docs));
 const headers = await readFile(new URL('_headers', docs), 'utf8');

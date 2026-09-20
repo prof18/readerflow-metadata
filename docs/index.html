@@ -57,249 +57,318 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!--
-      The page is styled with inline styles on each element.
-      Only the rules that cannot be expressed inline (resets, hover states,
-      keyframes, responsive breakpoints) live in this one global block.
-    -->
     <style>
-      *{box-sizing:border-box}
-      html{scroll-behavior:smooth}
-      body{margin:0;background:#FBF8F3;font-family:'Public Sans',system-ui,sans-serif;color:#1C1A17;-webkit-font-smoothing:antialiased}
-      a{color:inherit}
-      @keyframes rffloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-      @keyframes rffloat2{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-      .rf-link{text-decoration-line:underline !important;text-decoration-thickness:1px;text-underline-offset:.16em;text-decoration-color:rgba(90,84,75,.45);transition:color .18s ease,text-decoration-color .18s ease}
-      .rf-link:hover{color:#1C1A17 !important;text-decoration-color:currentColor}
-      .rf-footer-link{text-decoration-color:rgba(251,248,243,.35) !important}
-      .rf-footer-link:hover{color:#FBF8F3 !important;text-decoration-color:rgba(251,248,243,.9) !important}
-      .rf-card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-      .rf-card:hover{transform:translateY(-3px);box-shadow:0 16px 34px -20px rgba(28,16,4,.4);border-color:rgba(242,84,27,.35) !important}
-      .rf-btn{transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease}
-      .rf-btn:hover{transform:translateY(-2px)}
-      .rf-btn-dark:hover{box-shadow:0 14px 28px -12px rgba(28,16,4,.55)}
-      .rf-store-badge{display:inline-flex;align-items:center;gap:12px;width:198px;height:58px;background:#1C1A17;color:#FBF8F3;border-radius:14px;padding:0 18px;text-decoration:none;box-shadow:0 14px 28px -18px rgba(28,16,4,.5)}
-      .rf-store-badge svg{flex:0 0 auto}
-      .rf-store-copy{display:flex;flex-direction:column;line-height:1.08;text-align:left}
-      .rf-store-eyebrow{font-size:10.5px;font-weight:500;letter-spacing:.02em;color:rgba(251,248,243,.78);text-transform:none}
-      .rf-store-name{font-size:18px;font-weight:700;letter-spacing:-.01em;color:#FBF8F3}
-      .rf-chip{transition:border-color .2s ease,color .2s ease}
-      .rf-chip:hover{border-color:rgba(242,84,27,.45) !important;color:#C8410F}
-      @media(max-width:920px){
-        .rf-hero{grid-template-columns:1fr !important;text-align:center}
-        .rf-hero-copy{margin:0 auto}
-        .rf-hero-badges{justify-content:center}
-        .rf-import{grid-template-columns:1fr !important}
-        .rf-navlinks{display:none !important}
-      }
-      @media(max-width:760px){.rf-feat{grid-template-columns:1fr 1fr !important}}
-      @media(max-width:520px){
-        .rf-feat{grid-template-columns:1fr !important}
-        .rf-pad{padding-left:24px !important;padding-right:24px !important}
-        .rf-hero,.rf-hero>*{min-width:0}
-        .rf-hero-copy{width:100% !important;max-width:342px !important;overflow:visible}
-        .rf-hero-copy h1{max-width:320px;margin-left:auto !important;margin-right:auto !important;font-size:36px !important;line-height:1.06 !important}
-        .rf-hero-copy p{font-size:16px !important}
-        .rf-hero-kicker{display:block !important;max-width:100%;white-space:normal !important;line-height:1.35;text-align:center}
-        .rf-hero-badges{flex-direction:column;align-items:center}
-        .rf-hero-badges .rf-store-badge{width:min(100%,240px)}
-        .rf-hero-phones{min-height:372px !important;gap:10px !important;align-items:flex-start !important;margin-top:36px}
-        .rf-phone-home,.rf-phone-reader{width:164px !important;height:356px !important;border-radius:28px !important;padding:6px !important;box-shadow:0 22px 40px -22px rgba(28,16,4,.45) !important}
-        .rf-phone-home{margin-bottom:0 !important;margin-top:22px}
-        .rf-phone-reader{margin-bottom:0 !important}
-        .rf-phone-home > div:first-child,.rf-phone-reader > div:first-child{top:13px !important;width:52px !important;height:15px !important;border-radius:10px !important}
-        .rf-phone-home > div:nth-child(2),.rf-phone-reader > div:nth-child(2){border-radius:23px !important}
-      }
-    </style>
+:root{
+  --paper:#FBF8F3; --sand:#F4ECE0; --board:#EADFCD; --ink:#1C1A17; --muted:#5A544B; --stone:#857E73;
+  --ember:#C8410F; --flame:#F2541B; --walnut:#221E18;
+  --tape:rgba(242,84,27,.22); --hl:rgba(242,84,27,.26);
+  --line:rgba(28,26,23,.1); --line-strong:rgba(28,26,23,.17);
+  --grot:'Schibsted Grotesk',system-ui,sans-serif; --serif:'Newsreader',Georgia,serif; --mono:'Spline Sans Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--grot);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+main{overflow-x:clip}
+a{color:inherit}
+img{max-width:100%;display:block}
+code{font-family:var(--mono);font-size:.92em}
+mark{background:linear-gradient(transparent 58%,var(--hl) 58%,var(--hl) 92%,transparent 92%);color:inherit;padding:0 .06em}
+:focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.h2{margin:0;font:800 clamp(36px,5.2vw,68px)/.95 var(--grot);letter-spacing:-.045em}
+.eyebrow{font:500 12.5px var(--mono);color:var(--ember);margin:0 0 16px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:40;background:rgba(251,248,243,.88);backdrop-filter:blur(12px);border-bottom:1px solid transparent}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:18px;letter-spacing:-.02em}
+.brand img{width:30px;height:30px;border-radius:8px}
+.nav-links{display:flex;gap:28px;align-items:center;font-size:14.5px;font-weight:500;color:var(--muted)}
+.nav-links a{text-decoration:none}
+.nav-links a:not(.btn):hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;background:var(--ink);color:var(--paper) !important;font:600 14px var(--grot);padding:10px 16px;border-radius:10px;text-decoration:none;transition:transform .2s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-light{background:var(--paper);color:var(--ink) !important}
+
+/* HERO (from B) */
+.hero{padding:64px 0 64px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:48px;align-items:end}
+.hero h1{margin:0;font:800 clamp(52px,8.6vw,124px)/.9 var(--grot);letter-spacing:-.055em}
+.hero h1 span{color:var(--ember)}
+.hero-side{max-width:350px;padding-bottom:12px}
+.hero-side p{margin:0 0 20px;font-size:17px;line-height:1.55;color:var(--muted)}
+.fine{margin-top:14px;font:400 12px var(--mono);color:var(--stone)}
+.badges{display:flex;flex-wrap:wrap;gap:10px}
+.badge{display:inline-flex;align-items:center;gap:10px;height:50px;padding:0 16px 0 14px;background:var(--ink);color:var(--paper);border-radius:12px;text-decoration:none;transition:transform .2s ease}
+.badge:hover{transform:translateY(-2px)}
+.badge small{display:block;font-size:10px;font-weight:500;opacity:.75;line-height:1.1}
+.badge b{display:block;font-size:16px;font-weight:700;line-height:1.15}
+.hero > *{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero-side{animation-delay:.12s}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* DEVICES — staged like a desk: one library, three screens */
+.stage{position:relative;border-radius:28px;padding:64px 36px 52px;overflow:hidden;
+  background:radial-gradient(110% 80% at 50% 12%,#F9F2E8 0%,#F1E7D8 55%,#E7DBC8 100%)}
+.devices{position:relative;width:100%;max-width:1020px;margin:0 auto;aspect-ratio:2.25/1}
+.devices::after{content:"";position:absolute;left:12%;right:12%;bottom:2%;height:7%;border-radius:50%;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(40,24,8,.24),rgba(40,24,8,0) 72%);filter:blur(7px)}
+.devices .mac{position:absolute;left:50%;top:2%;transform:translateX(-50%);width:62%;z-index:1;
+  filter:drop-shadow(0 26px 34px rgba(28,16,4,.22))}
+.phone{position:absolute;filter:drop-shadow(0 22px 30px rgba(28,16,4,.28))}
+.phone img{width:100%;aspect-ratio:1350/2760;display:block}
+.phone.front{left:3.5%;bottom:7.3%;width:18.5%;z-index:3}
+.phone.back{right:4.5%;bottom:7.3%;width:18.5%;z-index:2}
+
+/* FEATURES — clippings (from C) */
+.board{margin-top:112px;background:var(--board);padding:104px 0;background-image:radial-gradient(rgba(28,26,23,.05) 1px,transparent 1.2px);background-size:14px 14px}
+.board-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:64px}
+.board-head p{max-width:360px;color:var(--muted);font-size:16.5px;line-height:1.6;margin:0}
+.pins{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:48px 32px;align-items:start}
+.clip{position:relative;display:block;margin:0;background:#FFFDF9;padding:24px 26px 28px;box-shadow:0 1px 0 rgba(28,26,23,.05),0 18px 30px -22px rgba(28,16,4,.45);transform:rotate(var(--r,0deg))}
+.clip.torn{clip-path:polygon(0 -30px,100% -30px,100% 94%,96% 97%,91% 94.5%,86% 98%,80% 95%,74% 97.5%,68% 95%,61% 98%,55% 95.5%,48% 98%,42% 95%,36% 97.5%,29% 95%,23% 98%,17% 95.5%,10% 97.5%,5% 95%,0 97%)}
+.tape{position:absolute;width:86px;height:24px;background:var(--tape);top:-11px;left:50%;transform:translateX(-50%) rotate(var(--tr,-3deg));mix-blend-mode:multiply}
+.pins .clip:nth-child(3n+1){--r:-1deg}
+.pins .clip:nth-child(3n+2){--r:.8deg}
+.pins .clip:nth-child(3n){--r:-.3deg}
+.clip .src{font:400 12px var(--mono);color:var(--stone)}
+.clip h3{font:500 25px/1.15 var(--serif);letter-spacing:-.01em;margin:10px 0 8px}
+.clip.big h3{font-size:32px}
+.clip p{font-size:15px;line-height:1.6;color:var(--muted);margin:0}
+.facts{margin:14px 0 0;padding:12px 0 0;border-top:1px dashed var(--line-strong);font:400 12.5px/1.8 var(--mono);color:var(--ink)}
+
+/* MAC + CLI — terminal (from A) */
+.cli{background:var(--walnut);color:#E9E3D8;padding:112px 0}
+.cli .eyebrow{color:var(--flame)}
+.cli .h2{color:var(--paper)}
+.cli-head{display:flex;justify-content:space-between;align-items:end;gap:40px}
+.cli-head p{max-width:440px;margin:0 0 20px;font-size:17px;line-height:1.6;color:#B9B1A4}
+.cli-head code{color:var(--paper)}
+.cli-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:48px;margin-top:64px;align-items:start}
+.term{background:#15120F;border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;box-shadow:0 40px 70px -40px rgba(0,0,0,.8)}
+.term-bar{display:flex;align-items:center;gap:7px;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.06);font:400 12px var(--mono);color:#7F776B}
+.term-bar i{width:11px;height:11px;border-radius:50%;background:#3A342D}
+.term-bar span{margin-left:auto;margin-right:auto;padding-right:40px}
+.term-body{padding:18px 22px 22px;font:400 13px/1.85 var(--mono);color:#CFC7BA;overflow-x:auto}
+.term-body div{white-space:pre}
+.term .p{color:var(--flame)}.term .c{color:#FBF8F3}.term .o{color:#8F877A}.term .s{color:#E9C9A0}
+.cur{display:inline-block;width:8px;height:15px;background:var(--flame);vertical-align:-2px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.verbs{display:grid;grid-template-columns:auto 1fr;gap:0 20px;margin:0}
+.verbs dt,.verbs dd{padding:12px 0;border-top:1px solid rgba(255,255,255,.08);margin:0}
+.verbs dt{font:500 13.5px var(--mono);color:var(--paper)}
+.verbs dd{font-size:14.5px;color:#A89F92;line-height:1.5}
+.verbs code{color:#D5CEC2}
+.agents{margin-top:56px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center}
+.agents p{margin:0;font-size:16px;line-height:1.6;color:#B9B1A4;max-width:580px}
+.agents p b{color:var(--paper);font-weight:600}
+.agents code{color:var(--paper)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 12.5px var(--mono);padding:7px 12px;border:1px solid rgba(255,255,255,.16);border-radius:999px;color:#E9E3D8}
+.howto{margin-top:18px;font:400 12.5px var(--mono);color:#7F776B}
+
+/* IMPORT */
+.import{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center;padding:120px 0}
+.import p{font-size:16.5px;line-height:1.6;color:var(--muted);margin:20px 0 22px}
+.lchips{display:flex;flex-wrap:wrap;gap:8px}
+.lchip{font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:999px;border:1px solid var(--line-strong);background:#fff}
+.ledger{--r:1.2deg;font:400 13px/1.9 var(--mono);padding:26px 26px 38px;background:#FFFDF9 repeating-linear-gradient(transparent 0 23.7px,rgba(200,65,15,.12) 23.7px 24.7px)}
+.ledger .row{white-space:pre;overflow:hidden;text-overflow:ellipsis}
+.ledger .row:first-of-type{color:var(--ember)}
+
+/* END */
+.end{text-align:center;padding:120px 0;border-top:1px solid var(--line)}
+.end .h2{max-width:900px;margin:0 auto}
+.end p{color:var(--muted);font-size:17px;margin:18px 0 28px}
+.end .badges{justify-content:center}
+footer{background:var(--walnut);color:#A89F92;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-top:32px;padding-bottom:36px}
+footer .brand{color:var(--paper)}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 24px}
+footer a{text-decoration:none;color:#D5CEC2}
+footer nav a:hover{color:var(--paper);text-decoration:underline;text-underline-offset:4px}
+
+@media(max-width:1080px){
+  .devices{aspect-ratio:2.15/1}
+  .devices .mac{width:60%}
+  .phone.front{left:2%;width:19.5%}
+  .phone.back{right:3%;width:19.5%}
+}
+@media(max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr);gap:28px;padding-top:40px}
+  .nav-links a:not(.btn){display:none}
+  .board-head,.cli-head{flex-direction:column;align-items:start}
+  .cli-grid,.import,.agents{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:640px){
+  .wrap{padding:0 16px}
+  .stage{border-radius:22px;padding:28px 18px 30px}
+  .devices{aspect-ratio:auto;display:flex;flex-direction:column;align-items:center}
+  .phone.front,.phone.back{position:static;width:min(58%,220px);left:auto;right:auto;bottom:auto}
+  .phone.front{order:1;align-self:flex-start;margin-left:2%;z-index:2}
+  .phone.back{order:2;align-self:flex-end;margin-right:2%;margin-top:-16%;z-index:3}
+  .devices .mac{position:static;transform:none;width:100%;order:3;margin-top:32px}
+  .devices::after{left:10%;right:10%;bottom:-10px;height:14px}
+  .term-body{font-size:12px;padding:14px 16px 18px}
+  .term-body div{white-space:pre-wrap;overflow-wrap:anywhere;padding-left:2ch;text-indent:-2ch}
+  .verbs{grid-template-columns:minmax(0,1fr)}
+  .verbs dd{border-top:0;padding-top:0}
+  .term-bar span{padding-right:0}
+  .board{margin-top:72px}
+  .board,.cli{padding:72px 0}.import{padding:72px 0}.end{padding:80px 0}
+  .ledger .row{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<div style="position:sticky;top:0;z-index:50;background:rgba(251,248,243,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(28,26,23,.07)">
-  <div class="rf-pad" style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 40px">
-    <a href="#top" style="display:flex;align-items:center;gap:11px;text-decoration:none">
-      <img src="icon-512.png" alt="ReaderFlow" style="width:34px;height:34px;border-radius:9px;display:block">
-      <span style="font:600 19px 'Newsreader',serif;letter-spacing:-.01em">ReaderFlow</span>
-    </a>
-    <div class="rf-navlinks" style="display:flex;align-items:center;gap:32px">
-      <a class="rf-link" href="#features" style="font-size:14.5px;font-weight:500;color:#5A544B;text-decoration:none">Features</a>
-      <a class="rf-link" href="#import" style="font-size:14.5px;font-weight:500;color:#5A544B;text-decoration:none">Import</a>
-      <a class="rf-btn rf-btn-dark" href="https://apps.apple.com/app/readerflow/id6739498537" style="display:inline-flex;align-items:center;gap:7px;background:#1C1A17;color:#FBF8F3;font-size:14px;font-weight:600;padding:9px 17px;border-radius:10px;text-decoration:none">Get the app</a>
-    </div>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="icon-512.png" alt="">ReaderFlow</a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#features">Features</a>
+      <a href="#cli">Command line</a>
+      <a href="#import">Import</a>
+      <a class="btn" href="https://apps.apple.com/app/readerflow/id6739498537">Get the app</a>
+    </nav>
   </div>
-</div>
+</header>
 
-<!-- HERO -->
-<div id="top" class="rf-pad" style="max-width:1180px;margin:0 auto;padding:72px 40px 60px">
-  <div class="rf-hero" style="display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center">
-    <div class="rf-hero-copy" style="max-width:500px">
-      <div class="rf-hero-kicker" style="display:inline-flex;align-items:center;gap:8px;background:rgba(242,84,27,.09);color:#C8410F;font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;letter-spacing:.01em">Private · offline-first · iOS · Android · macOS</div>
-      <h1 style="font:500 clamp(40px,6vw,64px)/1.03 'Newsreader',serif;letter-spacing:-.02em;margin:22px 0 0">Read everything you save.<br><span style="font-style:italic;color:#C8410F">In peace.</span></h1>
-      <p style="font-size:18px;line-height:1.6;color:#5A544B;margin:22px 0 0">A clean, offline-first reading experience — fully private and on your device. Save articles, sync across devices, and read distraction-free anywhere.</p>
-      <div class="rf-hero-badges" style="display:flex;flex-wrap:wrap;gap:13px;margin-top:34px">
-        <a class="rf-btn rf-store-badge" href="https://apps.apple.com/app/readerflow/id6739498537" aria-label="Download ReaderFlow on the App Store">
-          <svg width="27" height="27" viewBox="0 0 24 24" fill="currentColor"><path d="M17.564 13.02c-.03-2.99 2.44-4.42 2.55-4.49-1.39-2.03-3.55-2.31-4.32-2.34-1.84-.19-3.59 1.08-4.52 1.08-.93 0-2.37-1.05-3.9-1.02-2.01.03-3.86 1.17-4.89 2.97-2.08 3.62-.53 8.98 1.5 11.92.99 1.44 2.17 3.06 3.71 3 1.49-.06 2.05-.96 3.85-.96 1.79 0 2.3.96 3.87.93 1.6-.03 2.61-1.47 3.59-2.92 1.13-1.67 1.6-3.29 1.62-3.37-.04-.02-3.11-1.19-3.14-4.73zM14.7 4.6c.82-1 1.37-2.38 1.22-3.76-1.18.05-2.61.79-3.46 1.78-.76.87-1.43 2.27-1.25 3.61 1.32.1 2.66-.67 3.49-1.63z"/></svg>
-          <span class="rf-store-copy"><span class="rf-store-eyebrow">Download on the</span><span class="rf-store-name">App Store</span></span>
-        </a>
-        <a class="rf-btn rf-store-badge" href="https://play.google.com/store/apps/details?id=com.prof18.readerflow" aria-label="Get ReaderFlow on Google Play">
-          <svg width="29" height="31" viewBox="0 0 32 36" aria-hidden="true">
-            <path fill="#00C3FF" d="M3.3 2.4c-.5.5-.8 1.3-.8 2.3v26.6c0 1 .3 1.8.8 2.3L18.1 18 3.3 2.4Z"/>
-            <path fill="#00E676" d="m22.7 13.2-4.6 4.8 4.6 4.8 5.5-3.1c1.8-1 1.8-2.4 0-3.4l-5.5-3.1Z"/>
-            <path fill="#FFEA00" d="M3.3 33.6c.8.8 2.1.9 3.6.1l15.8-8.9-4.6-4.8L3.3 33.6Z"/>
-            <path fill="#FF3D55" d="m3.3 2.4 14.8 15.6 4.6-4.8L6.9 4.3c-1.5-.8-2.8-.7-3.6.1Z"/>
-          </svg>
-          <span class="rf-store-copy"><span class="rf-store-eyebrow">Get it on</span><span class="rf-store-name">Google Play</span></span>
-        </a>
+<main id="top">
+  <div class="wrap">
+    <section class="hero">
+      <h1>Save it now.<br>Read it when<br>it's <span>quiet.</span></h1>
+      <div class="hero-side">
+        <p>A read-later app that keeps your articles on your device: clean, offline and private. For iPhone, iPad, Android and Mac.</p>
+        <div class="badges">
+          <a class="badge" href="https://apps.apple.com/app/readerflow/id6739498537" aria-label="Download ReaderFlow on the App Store"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.564 13.02c-.03-2.99 2.44-4.42 2.55-4.49-1.39-2.03-3.55-2.31-4.32-2.34-1.84-.19-3.59 1.08-4.52 1.08-.93 0-2.37-1.05-3.9-1.02-2.01.03-3.86 1.17-4.89 2.97-2.08 3.62-.53 8.98 1.5 11.92.99 1.44 2.17 3.06 3.71 3 1.49-.06 2.05-.96 3.85-.96 1.79 0 2.3.96 3.87.93 1.6-.03 2.61-1.47 3.59-2.92 1.13-1.67 1.6-3.29 1.62-3.37-.04-.02-3.11-1.19-3.14-4.73zM14.7 4.6c.82-1 1.37-2.38 1.22-3.76-1.18.05-2.61.79-3.46 1.78-.76.87-1.43 2.27-1.25 3.61 1.32.1 2.66-.67 3.49-1.63z"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
+          <a class="badge" href="https://play.google.com/store/apps/details?id=com.prof18.readerflow" aria-label="Get ReaderFlow on Google Play"><svg width="22" height="24" viewBox="0 0 32 36" aria-hidden="true"><path fill="#00C3FF" d="M3.3 2.4c-.5.5-.8 1.3-.8 2.3v26.6c0 1 .3 1.8.8 2.3L18.1 18 3.3 2.4Z"/><path fill="#00E676" d="m22.7 13.2-4.6 4.8 4.6 4.8 5.5-3.1c1.8-1 1.8-2.4 0-3.4l-5.5-3.1Z"/><path fill="#FFEA00" d="M3.3 33.6c.8.8 2.1.9 3.6.1l15.8-8.9-4.6-4.8L3.3 33.6Z"/><path fill="#FF3D55" d="m3.3 2.4 14.8 15.6 4.6-4.8L6.9 4.3c-1.5-.8-2.8-.7-3.6.1Z"/></svg><span><small>Get it on</small><b>Google Play</b></span></a>
+        </div>
+        <div class="fine">No account needed. Your library stays on your device.</div>
       </div>
-      <div style="display:flex;align-items:center;gap:8px;margin-top:18px;color:#857E73;font-size:13px">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg>
-        No account needed. Your data stays on your device.
+    </section>
+
+    <section aria-label="ReaderFlow on iPhone and Mac">
+      <div class="stage">
+       <div class="devices">
+        <img class="mac" src="screenshots/macos/reader.webp" alt="ReaderFlow on macOS">
+        <div class="phone front"><img src="screenshots/ios/home-frame.webp" alt="ReaderFlow library on iPhone"></div>
+        <div class="phone back"><img src="screenshots/ios/reader-frame.webp" alt="An article in ReaderFlow's reader on iPhone"></div>
+       </div>
       </div>
-    </div>
-    <div class="rf-hero-phones" style="position:relative;display:flex;justify-content:center;align-items:flex-end;gap:18px;min-height:540px">
-      <div class="rf-phone-home" style="position:relative;width:236px;height:512px;background:#0c0c0e;border-radius:40px;padding:8px;box-shadow:0 30px 55px -22px rgba(28,16,4,.4);flex:none;margin-bottom:24px;animation:rffloat 7s ease-in-out infinite">
-        <div style="position:absolute;top:18px;left:50%;transform:translateX(-50%);width:74px;height:21px;background:#0c0c0e;border-radius:13px;z-index:2"></div>
-        <div style="width:100%;height:100%;border-radius:33px;overflow:hidden;background:#fff"><img src="screenshots/ios/home.webp" alt="ReaderFlow home screen" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
-      </div>
-      <div class="rf-phone-reader" style="position:relative;width:236px;height:512px;background:#0c0c0e;border-radius:40px;padding:8px;box-shadow:0 30px 55px -22px rgba(28,16,4,.4);flex:none;animation:rffloat2 7s ease-in-out infinite .6s">
-        <div style="position:absolute;top:18px;left:50%;transform:translateX(-50%);width:74px;height:21px;background:#0c0c0e;border-radius:13px;z-index:2"></div>
-        <div style="width:100%;height:100%;border-radius:33px;overflow:hidden;background:#fff"><img src="screenshots/ios/reader.webp" alt="ReaderFlow reader mode" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></div>
-      </div>
-    </div>
+    </section>
   </div>
-</div>
 
-<!-- FEATURES -->
-<div id="features" style="background:#fff;border-top:1px solid rgba(28,26,23,.07);border-bottom:1px solid rgba(28,26,23,.07)">
-  <div class="rf-pad" style="max-width:1180px;margin:0 auto;padding:72px 40px">
-    <div style="max-width:560px">
-      <div style="font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C8410F">Why ReaderFlow</div>
-      <h2 style="font:500 clamp(30px,4vw,42px)/1.1 'Newsreader',serif;letter-spacing:-.02em;margin:12px 0 0">Built for reading, built for privacy.</h2>
-    </div>
-    <div class="rf-feat" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:42px">
-      <div class="rf-card" style="padding:28px;border:1px solid rgba(28,26,23,.1);border-radius:16px;background:#FBF8F3">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(242,84,27,.1);display:flex;align-items:center;justify-content:center;color:#C8410F"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M10.7 5.1A10 10 0 0 1 21 9M5 9a10 10 0 0 1 2-1.5M8.5 12.5A6 6 0 0 1 15 11M5.5 12.5a6 6 0 0 1 1.5-1M12 16h.01"/></svg></div>
-        <h3 style="font-size:17.5px;font-weight:600;margin:18px 0 7px">100% offline reading</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#5A544B;margin:0">Everything is processed and stored locally. No internet needed to read what you've saved.</p>
+  <section class="board" id="features">
+    <div class="wrap">
+      <div class="board-head">
+        <h2 class="h2">What you get,<br>and what you don't.</h2>
+        <p>No feed, no recommendations, no account. Just the things you chose to read, kept somewhere you control.</p>
       </div>
-      <div class="rf-card" style="padding:28px;border:1px solid rgba(28,26,23,.1);border-radius:16px;background:#FBF8F3">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(242,84,27,.1);display:flex;align-items:center;justify-content:center;color:#C8410F"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-9 9 9 9 0 0 1-7.5-4M3 12a9 9 0 0 1 9-9 9 9 0 0 1 7.5 4"/><path d="M21 3v4h-4M3 21v-4h4"/></svg></div>
-        <h3 style="font-size:17.5px;font-weight:600;margin:18px 0 7px">Smart sync</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#5A544B;margin:0">Sync your reading list across devices with Dropbox (Android, iOS &amp; macOS) or iCloud (iOS &amp; macOS).</p>
-      </div>
-      <div class="rf-card" style="padding:28px;border:1px solid rgba(28,26,23,.1);border-radius:16px;background:#FBF8F3">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(242,84,27,.1);display:flex;align-items:center;justify-content:center;color:#C8410F"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg></div>
-        <h3 style="font-size:17.5px;font-weight:600;margin:18px 0 7px">On-device parsing</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#5A544B;margin:0">Content extraction happens locally — a fast reading experience with complete privacy.</p>
-      </div>
-      <div class="rf-card" style="padding:28px;border:1px solid rgba(28,26,23,.1);border-radius:16px;background:#FBF8F3">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(242,84,27,.1);display:flex;align-items:center;justify-content:center;color:#C8410F"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13l2 2 4-4"/></svg></div>
-        <h3 style="font-size:17.5px;font-weight:600;margin:18px 0 7px">Easy CSV import</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#5A544B;margin:0">Migrate from any service with flexible CSV import — Pocket, Instapaper, Omnivore and custom formats.</p>
-      </div>
-      <div class="rf-card" style="padding:28px;border:1px solid rgba(28,26,23,.1);border-radius:16px;background:#FBF8F3">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(242,84,27,.1);display:flex;align-items:center;justify-content:center;color:#C8410F"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0l-7.2-7.2a2 2 0 0 1-.6-1.4V4a1 1 0 0 1 1-1h8a2 2 0 0 1 1.4.6l7.4 7.4a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.3"/></svg></div>
-        <h3 style="font-size:17.5px;font-weight:600;margin:18px 0 7px">Smart organization</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#5A544B;margin:0">Tag your articles, archive when done, and find anything quickly.</p>
-      </div>
-      <div class="rf-card" style="padding:28px;border:1px solid rgba(28,26,23,.1);border-radius:16px;background:#FBF8F3">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(242,84,27,.1);display:flex;align-items:center;justify-content:center;color:#C8410F"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="10" rx="2"/><path d="M5 18h8"/><rect x="17" y="9" width="5" height="11" rx="1.5"/></svg></div>
-        <h3 style="font-size:17.5px;font-weight:600;margin:18px 0 7px">Cross-platform</h3>
-        <p style="font-size:14.5px;line-height:1.55;color:#5A544B;margin:0">On Android, iOS and macOS with feature parity. Your reading stays consistent everywhere.</p>
+      <div class="pins">
+        <article class="clip big"><span class="tape"></span><div class="src">privacy</div><h3>Cleaned up on your phone, not on a server.</h3><p>ReaderFlow downloads the page and pulls out the article <mark>on your device</mark>. There's no reader service in the middle, so nobody else sees what you save.</p></article>
+        <article class="clip torn"><span class="tape" style="--tr:3deg"></span><div class="src">offline</div><h3>Already there when the signal isn't.</h3><p>The text is stored with the article. Read on a plane or underground, and pick up at the same paragraph next time.</p></article>
+        <article class="clip"><span class="tape" style="--tr:5deg"></span><div class="src">sync</div><h3>Your cloud, or none at all.</h3><p>Keep your devices in step through an account you already have. Skip it and nothing leaves your phone.</p><div class="facts">Dropbox — iOS · Android · macOS<br>iCloud &nbsp;— iOS · macOS</div></article>
+        <article class="clip torn"><span class="tape" style="--tr:-4deg"></span><div class="src">organize</div><h3>Categories, archive, search.</h3><p>Sort now or later. Archive what you've finished. Find that piece from March.</p></article>
+        <article class="clip"><span class="tape" style="--tr:-2deg"></span><div class="src">links</div><h3>Links that open in the app.</h3><p><code>readerflow.app/article</code> links open the saved article straight in ReaderFlow on iPhone, Android and Mac.</p></article>
+        <article class="clip torn"><span class="tape" style="--tr:2deg"></span><div class="src">everywhere</div><h3>Same library on every screen.</h3><p>iPhone, iPad, Android and a native Mac app, with the same features on each.</p></article>
       </div>
     </div>
+  </section>
+
+  <section class="cli" id="cli">
+    <div class="wrap">
+      <div class="cli-head">
+        <div>
+          <p class="eyebrow">New on Mac</p>
+          <h2 class="h2">Your reading list,<br>from the terminal.</h2>
+        </div>
+        <div>
+          <p>The Mac app includes a <code>readerflow</code> command. Save links from scripts, list what's waiting, and print any article as clean Markdown.</p>
+          <a class="btn btn-light" href="https://apps.apple.com/app/readerflow/id6739498537">Download for Mac</a>
+        </div>
+      </div>
+
+      <div class="cli-grid">
+        <div class="term" role="img" aria-label="Terminal session using the readerflow command">
+          <div class="term-bar"><i></i><i></i><i></i><span>~ — zsh</span></div>
+          <div class="term-body">
+<div><span class="p">$</span> <span class="c">readerflow add https://example.com/slow-web --category essays --wait</span></div>
+<div class="o">Saved “Notes on a slower internet” · essays</div>
+<div>&nbsp;</div>
+<div><span class="p">$</span> <span class="c">readerflow list --unread --limit 3</span></div>
+<div class="o">-217361609  Notes on a slower internet   essays</div>
+<div class="o">1388100523  How SQLite does WAL           dev</div>
+<div class="o">-40077321   A field guide to sourdough   kitchen</div>
+<div>&nbsp;</div>
+<div><span class="p">$</span> <span class="c">readerflow get -217361609 --format markdown</span></div>
+<div class="s"># Notes on a slower internet</div>
+<div class="s">Most of what we save, we never read…</div>
+<div>&nbsp;</div>
+<div><span class="p">$</span> <span class="cur"></span></div>
+          </div>
+        </div>
+        <dl class="verbs">
+          <dt>add</dt><dd>Save a URL, optionally into a category. <code>--wait</code> returns once the text is ready.</dd>
+          <dt>list</dt><dd>Filter by unread, archived, category or a search term.</dd>
+          <dt>get</dt><dd>Print an article as JSON, HTML, Markdown or plain text.</dd>
+          <dt>tag · untag</dt><dd>Move an article in or out of a category.</dd>
+          <dt>archive</dt><dd>Mark it done. <code>unarchive</code> brings it back.</dd>
+          <dt>random</dt><dd>Can't decide? Get one unread article.</dd>
+        </dl>
+      </div>
+
+      <div class="agents">
+        <p><b>Works with AI agents.</b> Install the ReaderFlow skill and your agent can save links, summarize what's waiting, and tidy up your categories. Every command has a <code>--json</code> mode.</p>
+        <div class="chips"><span class="chip">Claude Code</span><span class="chip">Codex</span><span class="chip">Cursor</span><span class="chip">~/.agents</span></div>
+      </div>
+      <p class="howto">Install from ReaderFlow → Settings → Command Line. macOS only.</p>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="import" id="import">
+      <div>
+        <p class="eyebrow">Import</p>
+        <h2 class="h2">Moving from Pocket?</h2>
+        <p>Export a CSV from your old read-it-later app and drop it in. ReaderFlow works out the columns by itself. Only the URL is required.</p>
+        <div class="lchips"><span class="lchip">Pocket</span><span class="lchip">Instapaper</span><span class="lchip">Omnivore</span><span class="lchip">Any CSV</span></div>
+      </div>
+      <div class="clip torn ledger" role="img" aria-label="Example CSV import file">
+        <span class="tape" style="--tr:-3deg"></span>
+        <div class="row">url,title,tags,state</div>
+        <div class="row">example.com/a1,Great Article,programming,unread</div>
+        <div class="row">example.com/a2,Design Guide,design|patterns,archive</div>
+        <div class="row">example.com/a3,Quick Read,,unread</div>
+      </div>
+    </section>
   </div>
-</div>
 
-<!-- MACOS -->
-<div id="macos" style="background:#F4ECE0">
-  <div class="rf-pad" style="max-width:1180px;margin:0 auto;padding:76px 40px">
-    <div style="text-align:center;max-width:600px;margin:0 auto">
-      <div style="font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C8410F">Now on macOS</div>
-      <h2 style="font:500 clamp(30px,4vw,42px)/1.1 'Newsreader',serif;letter-spacing:-.02em;margin:12px 0 14px">The same calm reading, on your Mac.</h2>
-      <p style="font-size:16.5px;line-height:1.6;color:#5A544B;margin:0 auto">The native macOS app brings all of ReaderFlow to your desktop — a clean reading experience that syncs seamlessly across your devices.</p>
-    </div>
-    <img src="screenshots/macos/reader.webp" alt="ReaderFlow on macOS" style="display:block;width:100%;max-width:860px;margin:40px auto 0;filter:drop-shadow(0 30px 50px rgba(28,16,4,.22))">
-    <div style="text-align:center;margin-top:34px">
-      <a class="rf-btn rf-btn-dark" href="https://apps.apple.com/app/readerflow/id6739498537" style="display:inline-flex;align-items:center;gap:9px;background:#1C1A17;color:#FBF8F3;font-size:15px;font-weight:600;padding:13px 26px;border-radius:13px;text-decoration:none">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.564 13.02c-.03-2.99 2.44-4.42 2.55-4.49-1.39-2.03-3.55-2.31-4.32-2.34-1.84-.19-3.59 1.08-4.52 1.08-.93 0-2.37-1.05-3.9-1.02-2.01.03-3.86 1.17-4.89 2.97-2.08 3.62-.53 8.98 1.5 11.92.99 1.44 2.17 3.06 3.71 3 1.49-.06 2.05-.96 3.85-.96 1.79 0 2.3.96 3.87.93 1.6-.03 2.61-1.47 3.59-2.92 1.13-1.67 1.6-3.29 1.62-3.37-.04-.02-3.11-1.19-3.14-4.73zM14.7 4.6c.82-1 1.37-2.38 1.22-3.76-1.18.05-2.61.79-3.46 1.78-.76.87-1.43 2.27-1.25 3.61 1.32.1 2.66-.67 3.49-1.63z"/></svg>
-        Download for Mac
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- IMPORT -->
-<div id="import" class="rf-pad" style="max-width:1180px;margin:0 auto;padding:76px 40px">
-  <div class="rf-import" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
-    <div>
-      <div style="font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#C8410F">Bring your list</div>
-      <h2 style="font:500 clamp(28px,3.6vw,38px)/1.12 'Newsreader',serif;letter-spacing:-.02em;margin:12px 0 16px">Import from anywhere in seconds.</h2>
-      <p style="font-size:16px;line-height:1.6;color:#5A544B;margin:0 0 22px">Migrate from any read-it-later service with a flexible CSV importer that automatically detects your columns.</p>
-      <div style="display:flex;flex-wrap:wrap;gap:9px;margin-bottom:22px">
-        <span class="rf-chip" style="font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid rgba(28,26,23,.12)">Pocket</span>
-        <span class="rf-chip" style="font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid rgba(28,26,23,.12)">Instapaper</span>
-        <span class="rf-chip" style="font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid rgba(28,26,23,.12)">Omnivore</span>
-        <span class="rf-chip" style="font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid rgba(28,26,23,.12)">Custom CSV</span>
-      </div>
-      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(242,84,27,.09);padding:11px 16px;border-radius:11px;flex-wrap:wrap">
-        <span style="color:#C8410F;font-weight:700;font-size:15px">Only URLs are required</span>
-        <span style="color:#5A544B;font-size:14px">— everything else is optional.</span>
+  <section class="end">
+    <div class="wrap">
+      <h2 class="h2">Your reading list,<br>minus the internet.</h2>
+      <p>Free on iPhone, iPad, Android and Mac.</p>
+      <div class="badges">
+        <a class="badge" href="https://apps.apple.com/app/readerflow/id6739498537" aria-label="Download ReaderFlow on the App Store"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.564 13.02c-.03-2.99 2.44-4.42 2.55-4.49-1.39-2.03-3.55-2.31-4.32-2.34-1.84-.19-3.59 1.08-4.52 1.08-.93 0-2.37-1.05-3.9-1.02-2.01.03-3.86 1.17-4.89 2.97-2.08 3.62-.53 8.98 1.5 11.92.99 1.44 2.17 3.06 3.71 3 1.49-.06 2.05-.96 3.85-.96 1.79 0 2.3.96 3.87.93 1.6-.03 2.61-1.47 3.59-2.92 1.13-1.67 1.6-3.29 1.62-3.37-.04-.02-3.11-1.19-3.14-4.73zM14.7 4.6c.82-1 1.37-2.38 1.22-3.76-1.18.05-2.61.79-3.46 1.78-.76.87-1.43 2.27-1.25 3.61 1.32.1 2.66-.67 3.49-1.63z"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
+        <a class="badge" href="https://play.google.com/store/apps/details?id=com.prof18.readerflow" aria-label="Get ReaderFlow on Google Play"><svg width="22" height="24" viewBox="0 0 32 36" aria-hidden="true"><path fill="#00C3FF" d="M3.3 2.4c-.5.5-.8 1.3-.8 2.3v26.6c0 1 .3 1.8.8 2.3L18.1 18 3.3 2.4Z"/><path fill="#00E676" d="m22.7 13.2-4.6 4.8 4.6 4.8 5.5-3.1c1.8-1 1.8-2.4 0-3.4l-5.5-3.1Z"/><path fill="#FFEA00" d="M3.3 33.6c.8.8 2.1.9 3.6.1l15.8-8.9-4.6-4.8L3.3 33.6Z"/><path fill="#FF3D55" d="m3.3 2.4 14.8 15.6 4.6-4.8L6.9 4.3c-1.5-.8-2.8-.7-3.6.1Z"/></svg><span><small>Get it on</small><b>Google Play</b></span></a>
       </div>
     </div>
-    <div style="background:#221E18;border-radius:16px;padding:22px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;line-height:1.85;color:#D8D2C7;overflow:hidden;box-shadow:0 20px 40px -18px rgba(28,16,4,.4)">
-      <div style="display:flex;gap:7px;margin-bottom:14px"><span style="width:11px;height:11px;border-radius:50%;background:#FF5F57"></span><span style="width:11px;height:11px;border-radius:50%;background:#FEBC2E"></span><span style="width:11px;height:11px;border-radius:50%;background:#28C840"></span></div>
-      <div><span style="color:#FF9A52">url</span>,<span style="color:#8FB5FF">title</span>,<span style="color:#8FB5FF">tags</span>,<span style="color:#8FB5FF">state</span>,<span style="color:#8FB5FF">time_added</span></div>
-      <div style="color:#A39C90">example.com/a1,"Great Article","programming",unread,164…</div>
-      <div style="color:#A39C90">example.com/a2,"Design Guide","design|patterns",archive,164…</div>
-      <div style="color:#A39C90">example.com/a3,"Quick Read",,unread,164…</div>
-    </div>
-  </div>
-</div>
+  </section>
+</main>
 
-<!-- CTA STRIP -->
-<div style="background:#fff;border-top:1px solid rgba(28,26,23,.07)">
-  <div class="rf-pad" style="max-width:1180px;margin:0 auto;padding:72px 40px;text-align:center">
-    <h2 style="font:500 clamp(30px,4.2vw,46px)/1.08 'Newsreader',serif;letter-spacing:-.02em;margin:0 auto;max-width:560px">Start reading, distraction-free.</h2>
-    <p style="font-size:17px;color:#5A544B;margin:16px auto 0;max-width:440px">Free to download on iOS, Android and macOS.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:13px;justify-content:center;margin-top:30px">
-      <a class="rf-btn rf-store-badge" href="https://apps.apple.com/app/readerflow/id6739498537" aria-label="Download ReaderFlow on the App Store">
-        <svg width="27" height="27" viewBox="0 0 24 24" fill="currentColor"><path d="M17.564 13.02c-.03-2.99 2.44-4.42 2.55-4.49-1.39-2.03-3.55-2.31-4.32-2.34-1.84-.19-3.59 1.08-4.52 1.08-.93 0-2.37-1.05-3.9-1.02-2.01.03-3.86 1.17-4.89 2.97-2.08 3.62-.53 8.98 1.5 11.92.99 1.44 2.17 3.06 3.71 3 1.49-.06 2.05-.96 3.85-.96 1.79 0 2.3.96 3.87.93 1.6-.03 2.61-1.47 3.59-2.92 1.13-1.67 1.6-3.29 1.62-3.37-.04-.02-3.11-1.19-3.14-4.73zM14.7 4.6c.82-1 1.37-2.38 1.22-3.76-1.18.05-2.61.79-3.46 1.78-.76.87-1.43 2.27-1.25 3.61 1.32.1 2.66-.67 3.49-1.63z"/></svg>
-        <span class="rf-store-copy"><span class="rf-store-eyebrow">Download on the</span><span class="rf-store-name">App Store</span></span>
-      </a>
-      <a class="rf-btn rf-store-badge" href="https://play.google.com/store/apps/details?id=com.prof18.readerflow" aria-label="Get ReaderFlow on Google Play">
-        <svg width="29" height="31" viewBox="0 0 32 36" aria-hidden="true">
-          <path fill="#00C3FF" d="M3.3 2.4c-.5.5-.8 1.3-.8 2.3v26.6c0 1 .3 1.8.8 2.3L18.1 18 3.3 2.4Z"/>
-          <path fill="#00E676" d="m22.7 13.2-4.6 4.8 4.6 4.8 5.5-3.1c1.8-1 1.8-2.4 0-3.4l-5.5-3.1Z"/>
-          <path fill="#FFEA00" d="M3.3 33.6c.8.8 2.1.9 3.6.1l15.8-8.9-4.6-4.8L3.3 33.6Z"/>
-          <path fill="#FF3D55" d="m3.3 2.4 14.8 15.6 4.6-4.8L6.9 4.3c-1.5-.8-2.8-.7-3.6.1Z"/>
-        </svg>
-        <span class="rf-store-copy"><span class="rf-store-eyebrow">Get it on</span><span class="rf-store-name">Google Play</span></span>
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer style="background:#221E18;color:#C9C2B6">
-  <div class="rf-pad" style="max-width:1180px;margin:0 auto;padding:54px 40px 30px">
-    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px">
-      <div style="max-width:300px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:13px"><img src="icon-192.png" alt="ReaderFlow" style="width:30px;height:30px;border-radius:8px"><span style="font:600 18px 'Newsreader',serif;color:#FBF8F3">ReaderFlow</span></div>
-        <p style="font-size:14px;line-height:1.55;margin:0;color:#928B7F">Save and read articles offline with a clean, minimal interface.</p>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:11px;font-size:14px">
-        <a class="rf-link rf-footer-link" href="https://www.prof18.com/reader-flow/pp/privacy-policy-dec24/" target="_blank" rel="noopener noreferrer" style="color:#C9C2B6;text-decoration:none">Privacy Policy</a>
-        <a class="rf-link rf-footer-link" href="https://github.com/prof18/readerflow-metadata/issues/new/choose" style="color:#C9C2B6;text-decoration:none">Report Issues</a>
-        <a class="rf-link rf-footer-link" href="https://www.marcogomiero.com/" target="_blank" rel="noopener noreferrer" style="color:#C9C2B6;text-decoration:none">About the Author</a>
-        <a class="rf-link rf-footer-link" href="https://www.paypal.me/MarcoGomiero" target="_blank" rel="noopener noreferrer" style="color:#C9C2B6;text-decoration:none">Donations 🙏</a>
-      </div>
-    </div>
-    <div style="border-top:1px solid rgba(255,255,255,.1);margin-top:36px;padding-top:20px;font-size:12.5px;color:#7C7568">&copy; ReaderFlow. All rights reserved.</div>
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="icon-192.png" alt="">ReaderFlow</a>
+    <nav aria-label="Footer">
+      <a href="https://www.prof18.com/reader-flow/pp/privacy-policy-dec24/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+      <a href="https://github.com/prof18/readerflow-metadata/issues/new/choose">Report an issue</a>
+      <a href="https://www.marcogomiero.com/" target="_blank" rel="noopener noreferrer">About the author</a>
+      <a href="https://www.paypal.me/MarcoGomiero" target="_blank" rel="noopener noreferrer">Donate</a>
+    </nav>
+    <span>&copy; ReaderFlow</span>
   </div>
 </footer>
-
 </body>
 </html>
